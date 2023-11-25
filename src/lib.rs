@@ -16,6 +16,10 @@ impl<T> DerefedOnceLock<T> {
             panic!("Lazy is already initialized");
         }
     }
+
+    pub fn is_init(&self) -> bool {
+        self.inner.get().is_some()
+    }
 }
 
 impl<T> Deref for DerefedOnceLock<T> {
